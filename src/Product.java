@@ -1,12 +1,21 @@
 public class Product {
-    public Product(){
+    private Product(){
 
     }
-    public Product(String brand) {
-        this.brand = brand;
+
+    private static Product p;
+    public static  Product createProduct(){
+        if(p == null){
+            p = new Product();
+            return p;
+        }else{
+            return p;
+        }
     }
+
 
     public String brand;
+
     public void display(){
         System.out.println("Brand : " + this.brand);
     }
