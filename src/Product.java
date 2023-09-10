@@ -1,17 +1,18 @@
 public class Product {
-    public Product(){
-
-    }
-    public Product(String brand) {
-        this.brand = brand;
-    }
-
     public String brand;
-    public void display(){
+    public String model;
+    public String category;
+    public int price;
+
+
+    public  void display(){
+        System.out.println("Product Details");
+        System.out.println("=====================================================");
         System.out.println("Brand : " + this.brand);
+        System.out.println("Model : " + this.model);
+        System.out.println("Category : " + this.category);
+        System.out.println("Price : " + this.price);
     }
 
-    public void order() {
 
-    }
 }
