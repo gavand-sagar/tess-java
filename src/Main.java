@@ -1,9 +1,21 @@
 public class Main {
         public static void main(String[] args) {
-        Product p = new Product("Samsung");
-        p.display();
-        p.order();
-        System.out.println("Hello world!");
+
+        Iphone14 iphone = new Iphone14();
+        myDisplay(iphone);
+
+        SamsungGalaxy s = new SamsungGalaxy();
+        myDisplay(s);
+
+        Dryer d = new Dryer();
+        DryerAdaptor dryerAdaptor = new DryerAdaptor(d);
+        myDisplay(dryerAdaptor);
+
 
     }
+
+    public static void myDisplay(Product p){
+        p.display();
+    }
+
 }
