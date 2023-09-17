@@ -1,9 +1,14 @@
 public class Main {
         public static void main(String[] args) {
-        Product p = new Product("Samsung");
-        p.display();
-        p.order();
-        System.out.println("Hello world!");
+
+            PlainPizza p = new PlainPizza();
+            System.out.println(p.getPrice());
+
+            CheesePizza c = new CheesePizza(p);
+            System.out.println(c.getPrice());
+
+            PaneerPizza cc = new PaneerPizza(c);
+            System.out.println(cc.getPrice());
 
     }
 }
