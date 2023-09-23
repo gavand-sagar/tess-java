@@ -1,9 +1,11 @@
 public class Main {
         public static void main(String[] args) {
-        Product p = new Product("Samsung");
-        p.display();
-        p.order();
-        System.out.println("Hello world!");
+
+                Internet internet = new CompanyInternet();
+                internet.ConnectTo("facebook.com");
+                internet.ConnectTo("instagram.com");
+                internet.ConnectTo("youtube.com");
+                internet.ConnectTo("wikipedia.org");
 
     }
 }
