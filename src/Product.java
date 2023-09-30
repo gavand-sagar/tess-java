@@ -1,4 +1,7 @@
 public class Product {
+
+    static int stock = 100;
+
     public Product(){
 
     }
