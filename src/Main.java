@@ -1,25 +1,17 @@
 public class Main {
         public static void main(String[] args) {
+                FoodOrder f = new FoodOrder();
+                f.showStatus();
 
-                Object[] items = new Object[5];
-                items[0] = "A";
-                items[1] = "B";
-                items[2] = "C";
-                items[3] = "D";
-                items[4] = "E";
+                f.nextState();
+                f.showStatus();
 
 
+                f.nextState();
+                f.showStatus();
 
+                f.nextState();
+                f.showStatus();
 
-                MyIterator iterator = new EverySecondItemCollection(items);
-                while (iterator.hasNext()){
-                        Object o = iterator.next();
-                        System.out.println(o);
-                }
-
-
-
-
-
-    }
+        }
 }
