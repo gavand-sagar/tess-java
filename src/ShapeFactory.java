@@ -1,7 +1,7 @@
 import java.util.Dictionary;
 import java.util.Hashtable;
 
-public class ShapeFactory {
+public class ShapeFactory implements IShapeFactory{
 
     Dictionary<String,IMyShape> objects ;
 

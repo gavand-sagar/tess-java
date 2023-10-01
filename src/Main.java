@@ -1,9 +1,11 @@
 public class Main {
+
+        static  IShapeFactory shapeFactory = new ShapeFactory();
         public static void main(String[] args) {
 
         String input = "r";
 
-        IMyShape shape = new ShapeFactory().GetShape(input);
+        IMyShape shape = shapeFactory.GetShape(input);
         shape.Display();
 
 
