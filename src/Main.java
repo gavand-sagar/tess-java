@@ -3,16 +3,12 @@ import static java.awt.geom.Rectangle2D.intersect;
 public class Main {
         public static void main(String[] args) {
             int[] input1 =  { 1,3,2,4,5,8 };
-            int[] input2 =  {1,9,4,6,5,7};
-            int[] output = intersect(input1,input2);
+            int[] output = cyclicallyRotate(input1,3);
 
             for (int num: input1) {
                 System.out.print(num + ", ");
             }
-            System.out.println("\n==================");
-            for (int num: input2) {
-                System.out.print(num + ", ");
-            }
+
             System.out.println("\n==================");
             System.out.println("\n======Output========");
             for (int num: output) {
@@ -20,6 +16,43 @@ public class Main {
             }
 
         }
+
+    public static int[] cyclicallyRotate(int[] numbers,int index){
+        int[] outputArray = new int[numbers.length];
+        int temp = 0;
+        int counter = 0;
+        while(counter<numbers.length){
+
+            outputArray[temp++] = numbers[index];
+
+            if(index == (numbers.length - 1)){
+                index=0;
+            }else{
+                index++;
+            }
+
+            counter++;
+        }
+        return outputArray;
+    }
+
+
+        public static void cyclicRotate(int[] numbers,int index){
+            int counter = 0;
+            while(counter<numbers.length){
+
+                System.out.print(numbers[index] + ", ");
+
+                if(index == (numbers.length - 1)){
+                    index=0;
+                }else{
+                    index++;
+                }
+
+                counter++;
+            }
+        }
+
 
     private static int[] intersect(int[] input1, int[] input2) {
         int length = getTotalCommon(input1, input2);
