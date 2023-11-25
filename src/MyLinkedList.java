@@ -17,7 +17,7 @@ public class MyLinkedList<T> implements IMyLinkedList<T>{
     }
     @Override
     public void display() {
-            displayHelper(this.head);
+          displayHelper(this.head);
     }
 
     @Override
@@ -90,6 +90,7 @@ public class MyLinkedList<T> implements IMyLinkedList<T>{
             }else{
                 // prev.next = current.next
                 ListItem<T> prev = this.getItemAt(index - 1);
+                assert  prev != null;
                 ListItem<T> current = prev.getNext();
                 prev.setNext(current.getNext());
             }
@@ -109,7 +110,9 @@ public class MyLinkedList<T> implements IMyLinkedList<T>{
     public void swap(int index1, int index2) {
         ListItem<T> first = this.getItemAt(index1);
         ListItem<T> second = this.getItemAt(index2);
+        assert first != null;
         T val1 = first.getValue();
+        assert second != null;
         T val2 = second.getValue();
         first.setValue(val2);
         second.setValue(val1);
