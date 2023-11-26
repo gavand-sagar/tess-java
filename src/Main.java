@@ -1,16 +1,17 @@
 public class Main {
-        private static IMyDoublyLinkedList list = new MyDoublyLinkedList();
+        private static IMyDoublyLinkedList<Float> list = new MyDoublyLinkedList<Float>();
         public static void main(String[] args) throws Exception {
 
-            list.insertElementAt(0,"Rohit");
-            list.insertElementAt(1,"Payal");
-            list.insertElementAt(2,"Nisha");
-            list.insertElementAt(3,"Sagar");
-            list.insertElementAt(4,"Rahul");
+            list.insertElementAt(0,67.4f);
+            list.insertElementAt(1,69.4f);
+            list.insertElementAt(2,57.4f);
+            list.insertElementAt(3,90.4f);
+            list.insertElementAt(4,78.4f);
 
 
             list.displayForwards();
             System.out.println("\n======= after delete at 0 =======");
+            list.removeElementFrom(0);
             list.displayForwards();
 
 

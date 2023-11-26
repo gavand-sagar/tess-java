@@ -1,9 +1,9 @@
-public interface IMyDoublyLinkedList {
+public interface IMyDoublyLinkedList<AnyType> {
     void displayForwards();
     void displayBackwards();
-    void insertElementAt(int index,String value) throws Exception;
+    void insertElementAt(int index,AnyType value) throws Exception;
     void removeElementFrom(int index) throws Exception;
-    void updateElementAt(int index,String value) throws Exception;
-    String getElementAt(int index);
+    void updateElementAt(int index,AnyType value) throws Exception;
+    AnyType getElementAt(int index);
     int size();
 }

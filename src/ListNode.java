@@ -1,35 +1,35 @@
-public class ListNode {
-    private  String value;
-    private ListNode next;
-    private ListNode prev;
+public class ListNode<AnyType> {
+    private  AnyType value;
+    private ListNode<AnyType> next;
+    private ListNode<AnyType> prev;
 
-    public ListNode(String value, ListNode next, ListNode prev) {
+    public ListNode(AnyType value, ListNode<AnyType> next, ListNode<AnyType> prev) {
         this.value = value;
         this.next = next;
         this.prev = prev;
     }
 
-    public String getValue() {
+    public AnyType getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(AnyType value) {
         this.value = value;
     }
 
-    public ListNode getNext() {
+    public ListNode<AnyType> getNext() {
         return next;
     }
 
-    public void setNext(ListNode next) {
+    public void setNext(ListNode<AnyType> next) {
         this.next = next;
     }
 
-    public ListNode getPrev() {
+    public ListNode<AnyType> getPrev() {
         return prev;
     }
 
-    public void setPrev(ListNode prev) {
+    public void setPrev(ListNode<AnyType> prev) {
         this.prev = prev;
     }
 }
