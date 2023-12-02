@@ -1,25 +1,25 @@
-public class ListNode {
-    private int value;
-    private ListNode next;
+public class ListNode<T> {
+    private T value;
+    private ListNode<T> next;
 
-    public ListNode(int value, ListNode next) {
+    public ListNode(T value, ListNode<T> next) {
         this.value = value;
         this.next = next;
     }
 
-    public int getValue() {
+    public T getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(T value) {
         this.value = value;
     }
 
-    public ListNode getNext() {
+    public ListNode<T> getNext() {
         return next;
     }
 
-    public void setNext(ListNode next) {
+    public void setNext(ListNode<T> next) {
         this.next = next;
     }
 

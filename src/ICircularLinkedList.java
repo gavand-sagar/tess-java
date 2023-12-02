@@ -1,9 +1,9 @@
-public interface ICircularLinkedList {
+public interface ICircularLinkedList<T> {
     int size();
     void displayAll() throws Exception ;
     void displayOnce();
-    void insertAt(int index,int value) throws Exception;
+    void insertAt(int index,T value) throws Exception;
     void removeFrom(int index) throws Exception;
-    void updateAt(int index,int value);
-    int getValueAt(int index);
+    void updateAt(int index,T value);
+    T getValueAt(int index);
 }
