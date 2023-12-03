@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class MyLinkedList<T> implements IMyLinkedList<T>{
 
     private ListItem<T> head;
@@ -11,12 +13,13 @@ public class MyLinkedList<T> implements IMyLinkedList<T>{
           if(obj == null){
               return;
           }else{
-              System.out.println(obj.getValue());
+              System.out.print(obj.getValue() + "\t");
               displayHelper(obj.getNext());
           }
     }
     @Override
     public void display() {
+          System.out.println();
           displayHelper(this.head);
     }
 
@@ -43,6 +46,11 @@ public class MyLinkedList<T> implements IMyLinkedList<T>{
          }
          this.totalItems++;
 
+    }
+
+    @Override
+    public void push(T value) throws Exception {
+        this.insertAt(this.size(),value);
     }
 
     private ListItem<T> getItemAt(int i) {
@@ -116,5 +124,70 @@ public class MyLinkedList<T> implements IMyLinkedList<T>{
         T val2 = second.getValue();
         first.setValue(val2);
         second.setValue(val1);
+    }
+
+    @Override
+    public void removeDuplicatesInSortedList() {
+        ListItem<T> temp = this.head;
+        while (temp.getNext() != null){
+            ListItem<T> current = temp;  // 30
+            ListItem<T> next = current.getNext(); // 30
+            ListItem<T> nextOfNext = next.getNext();  // 30
+            if(current.getValue().equals(next.getValue()))
+            {
+                current.setNext(nextOfNext);
+                this.totalItems--;
+            }else{
+                temp = temp.getNext();
+            }
+
+        }
+    }
+
+    @Override
+    public void removeDuplicates() {
+        HashMap<T,T> map = new HashMap<>();
+        ListItem<T> temp = this.head;
+        ListItem<T> prev = null;
+        while (temp != null){
+            ListItem<T> current = temp; //50
+            if(map.containsKey(current.getValue())){
+                // 23 -> 30
+                    prev.setNext(current.getNext());
+                    this.totalItems--;
+                //
+            }else{
+                map.put(current.getValue(),current.getValue());
+                prev = temp;
+            }
+            temp = temp.getNext();
+        }
+    }
+
+    @Override
+    public void reverse() {
+        // go through all the items and set next of each value to prev of them
+        ListItem<T> current = this.head;
+        ListItem<T> prev = null;
+        while (current != null){
+            ListItem next = current.getNext();
+            current.setNext(prev);
+            prev = current;
+            current = next;
+        }
+
+        this.head = prev;
+    }
+
+    @Override
+    public void lastToTheFront() {
+            if(this.size() > 1){
+                ListItem<T> secondLastItem = this.getItemAt(this.size()-2);
+                ListItem<T> tail = secondLastItem.getNext();
+
+                tail.setNext(this.head);
+                this.head = tail;
+                secondLastItem.setNext(null);
+            }
     }
 }
