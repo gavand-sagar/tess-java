@@ -1,7 +1,7 @@
 import javax.swing.*;
 
 public class Main {
-      private  static  IStack stack = new Stack();
+      private  static  IStack stack = new StackDynamic();
       public static void main(String[] args) throws Exception {
 
             System.out.println(stack.isEmpty()); // true;
@@ -19,6 +19,17 @@ public class Main {
 
             System.out.println(stack.size());  // 1
 
+            stack.push(6);
+            stack.push(6);
+            stack.push(6);
+            stack.push(6);
+            stack.push(6);
+            stack.push(6);
+            stack.push(6);
+            stack.push(6);
+            stack.push(888);
+
+            System.out.println(stack.peek());  // 888
 
     }
 }
