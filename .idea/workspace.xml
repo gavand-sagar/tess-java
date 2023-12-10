@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae57ec77-c49f-4ed1-90a5-dce0ffae86ff" name="Changes" comment="temp commit">
-      <change afterPath="$PROJECT_DIR$/src/IQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SimpleQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    <list default="true" id="ae57ec77-c49f-4ed1-90a5-dce0ffae86ff" name="Changes" comment="final commit">
+      <change beforePath="$PROJECT_DIR$/src/IQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SimpleQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SimpleQueue.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +89,15 @@
       <option name="project" value="LOCAL" />
       <updated>1695525656991</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="final commit">
+      <option name="closed" value="true" />
+      <created>1702185512139</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702185512139</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,7 +107,8 @@
     <MESSAGE value="&#10;heyy" />
     <MESSAGE value="temppp" />
     <MESSAGE value="temp commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="temp commit" />
+    <MESSAGE value="final commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="final commit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

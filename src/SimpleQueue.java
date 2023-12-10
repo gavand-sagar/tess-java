@@ -48,4 +48,9 @@ public class SimpleQueue implements  IQueue{
 
         return value;
     }
+
+    @Override
+    public int front() {
+        return array[frontLocation];
+    }
 }
