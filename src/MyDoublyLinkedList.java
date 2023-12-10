@@ -10,26 +10,9 @@ public class MyDoublyLinkedList implements IMyDoublyLinkedList{
         displayForward(item.getNext());
     }
 
-    private static void displayBackwards(ListNode item){
-        if(item == null){
-            return;
-        }
-        System.out.print(item.getValue() + "\t");
-        displayBackwards(item.getPrev());
-    }
 
     @Override
-    public void displayForwards() {
-        displayForward(this.head);
-    }
-
-    @Override
-    public void displayBackwards() {
-        displayBackwards(this.tail);
-    }
-
-    @Override
-    public void insertElementAt(int index, String value) throws Exception {
+    public void insertElementAt(int index, int value,int priority) throws Exception {
 
         if(index < 0){
             throw new Exception("Cant insert at index less than 0");
@@ -40,9 +23,9 @@ public class MyDoublyLinkedList implements IMyDoublyLinkedList{
 
         if(index == 0){
             if(this.size() == 0){
-                this.head = this.tail = new ListNode(value,null,null);
+                this.head = this.tail = new ListNode(value,priority,null,null);
             }else{
-                ListNode item = new ListNode(value,null,null);
+                ListNode item = new ListNode(value,priority,null,null);
                 this.head.setPrev(item);
                 item.setNext(this.head);
                 this.head = item;
@@ -53,7 +36,7 @@ public class MyDoublyLinkedList implements IMyDoublyLinkedList{
                 throw new Exception("Something went wrong");
             }
             ListNode nextNode = previousNode.getNext();
-            ListNode newNode = new ListNode(value,nextNode,previousNode);
+            ListNode newNode = new ListNode(value,priority,nextNode,previousNode);
             if(nextNode != null){
                 nextNode.setPrev(newNode);
             }
@@ -103,22 +86,15 @@ public class MyDoublyLinkedList implements IMyDoublyLinkedList{
 
     }
 
-    @Override
-    public void updateElementAt(int index, String value) throws Exception {
-        ListNode node = getListNodeAt(index);
-        if(node == null){
-            throw new Exception("Item doesn't exists");
-        }
-        node.setValue(value);
-    }
+
 
     @Override
-    public String getElementAt(int index) {
+    public int getElementAt(int index) {
         ListNode node = getListNodeAt(index);
         if(node !=null){
             return node.getValue();
         }
-        return null;
+        return 0;
     }
 
     private ListNode getListNodeAt(int index) {
@@ -150,5 +126,20 @@ public class MyDoublyLinkedList implements IMyDoublyLinkedList{
     @Override
     public int size() {
         return this.size;
+    }
+
+    @Override
+    public int getIndexfromPriority(int priority) {
+        int index = this.size();
+
+        ListNode temp = tail;
+        while ((temp != null) && temp.getPriority()<priority){
+            index--;
+            temp = temp.getPrev();
+        }
+//        if(index<-1){
+//            index =0;
+//        }
+        return index;
     }
 }

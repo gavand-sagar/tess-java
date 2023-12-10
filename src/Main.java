@@ -1,33 +1,21 @@
 public class Main {
-        private static IMyDoublyLinkedList list = new MyDoublyLinkedList();
+        private static IPriorityQueue queue = new MyPriorityQueue();
         public static void main(String[] args) throws Exception {
 
-            list.insertElementAt(0,"Rohit");
-            list.insertElementAt(1,"Payal");
-            list.insertElementAt(2,"Nisha");
-            list.insertElementAt(3,"Sagar");
-            list.insertElementAt(4,"Rahul");
+
+            queue.enqueue(23,0);
+            queue.enqueue(30,0);
+            queue.enqueue(45,1);
+            queue.enqueue(50,2);
+            queue.enqueue(60,2);
+            queue.enqueue(90,1);
+            queue.enqueue(100,3);
 
 
-            list.displayForwards();
-            System.out.println("\n======= after delete at 0 =======");
-            list.displayForwards();
+            while (queue.size()>0){
+                System.out.println(queue.dequeue());
+            }
 
-
-
-
-
-
-//            ListNode rohit = new ListNode("Rohit",null,null);
-//            ListNode payal = new ListNode("Payal",null,rohit);
-//            ListNode nisha = new ListNode("Nisha",null,payal);
-//            ListNode pratik = new ListNode("Pratik",null,nisha);
-//            rohit.setNext(payal);
-//            payal.setNext(nisha);
-//            nisha.setNext(pratik);
-//
-//            displayForward(nisha);
-//            displayBackwards(nisha);
         }
 
 

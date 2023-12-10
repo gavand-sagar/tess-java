@@ -1,20 +1,30 @@
 public class ListNode {
-    private  String value;
+    private  int value;
+    private int priority;
     private ListNode next;
     private ListNode prev;
 
-    public ListNode(String value, ListNode next, ListNode prev) {
+    public ListNode(int value,int priority, ListNode next, ListNode prev) {
         this.value = value;
         this.next = next;
         this.prev = prev;
+        this.priority = priority;
     }
 
-    public String getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(int value) {
         this.value = value;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     public ListNode getNext() {
