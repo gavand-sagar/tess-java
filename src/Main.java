@@ -10,8 +10,7 @@ public class Main {
             queue.enqueue(60,2);
             queue.enqueue(90,1);
             queue.enqueue(100,3);
-
-
+            Object o = 56;
             while (queue.size()>0){
                 System.out.println(queue.dequeue());
             }
