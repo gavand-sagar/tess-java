@@ -23,7 +23,7 @@ public class Tree implements ITree{
     @Override
     public boolean find(int value) {
 
-
+            //implement the logic here
     }
 
     private void insertValue(Point root, int value) {
