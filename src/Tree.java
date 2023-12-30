@@ -22,9 +22,25 @@ public class Tree implements ITree{
 
     @Override
     public boolean find(int value) {
-
             //implement the logic here
+            return find(this.root,value);
     }
+
+    private boolean find(Point p, int value) {
+        //implement the logic here
+        if(p == null){
+            return false;
+        }
+        if(p.getValue() == value){
+            return  true;
+        }else if(value < p.getValue()){
+            return find(p.getLeft(),value);
+        }else{
+            return find(p.getRight(),value);
+        }
+
+    }
+
 
     private void insertValue(Point root, int value) {
         if(root == null){

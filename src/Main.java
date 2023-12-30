@@ -9,7 +9,7 @@ public class Main {
                 tree.insertValue(60);
                 tree.insertValue(40);
 
-                if(tree.find(70)){
+                if(tree.find(170)){
                         System.out.println("FOUND");
                 }else {
                         System.out.println("NOT-FOUND");
