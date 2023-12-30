@@ -20,6 +20,12 @@ public class Tree implements ITree{
         this.insertValue(this.root,value);
     }
 
+    @Override
+    public boolean find(int value) {
+
+
+    }
+
     private void insertValue(Point root, int value) {
         if(root == null){
             this.root = new Point(value);
