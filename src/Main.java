@@ -1,37 +1,48 @@
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main {
         public static void main(String[] args) {
 
-            System.out.println("Calculated -" + getSquareButSmartly(3));
-            System.out.println("Calculated -" + getSquareButSmartly(4));
-            System.out.println("Calculated -" + getSquareButSmartly(5));
-            System.out.println("Calculated -" + getSquareButSmartly(3));
-            System.out.println("Calculated -" + getSquareButSmartly(3));
+
+                Point Level3_1 = new Point(60);
+                Point Level3_2 = new Point(45);
+
+                Point Level2_1 = new Point(70);
+                Level2_1.setLeft(Level3_1);
+                Level2_1.setRight(Level3_2);
+
+
+                Point Level3_3 = new Point(67);
+                Point Level2_2 = new Point(80);
+                Level2_2.setLeft(Level3_3);
+
+
+                Point Level3_4 = new Point(56);
+                Point Level3_5 = new Point(78);
+                Point Level2_3 = new Point(90);
+                Level2_3.setLeft(Level3_5);
+                Level2_3.setRight(Level3_4);
+
+                Level3_3.setRight(Level2_3);
+
+
+                Point Level1 = new Point(50);
+                Level1.setLeft(Level2_1);
+                Level1.setRight(Level2_2);
+
+                display(Level1,"");
+
+
 
         }
 
-        public  static Map<Integer,Integer> results = new HashMap<Integer,Integer>();
-        public static int getSquareButSmartly(int number){
-            if(results.containsKey(number)){
-                return results.get(number);
-            }else{
-                int answer = getSquare(number);
-                results.put(number,answer);
-                return  answer;
-            }
+
+        public  static  void display(Point p,String indentetion){
+                if(p != null){
+                        System.out.println(indentetion + "-" + p.getValue());
+                        display(p.getLeft(),indentetion + "  ");
+                        display(p.getRight(),indentetion + "  ");
+                }
         }
 
-
-        public static int getSquare(int number){
-            System.out.println("Now Calculating for "+ number);
-            try{
-                Thread.sleep(1500);
-            }catch (Exception e){
-
-            }
-            return number * number;
-        }
 
 }
