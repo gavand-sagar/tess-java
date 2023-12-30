@@ -26,6 +26,30 @@ public class Tree implements ITree{
             return find(this.root,value);
     }
 
+    @Override
+    public int min() {
+        if(this.root == null){
+            return 0;
+        }
+        Point temp = this.root;
+        while (temp.getLeft() != null){
+            temp = temp.getLeft();
+        }
+        return temp.getValue();
+    }
+
+    @Override
+    public int max() {
+        if(this.root == null){
+            return 0;
+        }
+        Point temp = this.root;
+        while (temp.getRight() != null){
+            temp = temp.getRight();
+        }
+        return temp.getValue();
+    }
+
     private boolean find(Point p, int value) {
         //implement the logic here
         if(p == null){

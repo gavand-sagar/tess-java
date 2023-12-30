@@ -4,6 +4,9 @@ public interface ITree {
 
     boolean find(int value);
 
+    int min();
+    int max();
+
     int size();
     boolean isEmpty();
 }
