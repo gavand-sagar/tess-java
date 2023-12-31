@@ -5,10 +5,21 @@ public class Point {
     private Point left;
     private Point right;
 
+    private int height;
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
     public Point(int value) {
         this.value = value;
         this.left = null;
         this.right = null;
+        this.height = 0;
     }
     public Point(int value, Point left, Point right) {
         this.value = value;
