@@ -16,8 +16,8 @@ public class Main {
 
                 tree.display();
 
-                System.out.println("\n\n");
-                System.out.println(tree.next(80));;
+
+                tree.displayAsArray();
 
         }
 

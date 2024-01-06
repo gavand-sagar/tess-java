@@ -53,6 +53,20 @@ class Tree implements  ITree{
             display(p.right,indentation + " R");
         }
     }
+
+    public  void displayAsArray(){
+        System.out.println("Tree in Asc Order");
+        displayAsArray(root);
+    }
+
+    private void displayAsArray(Point p){
+        if(p != null){
+            displayAsArray(p.left);
+            System.out.print(p.key + " ");
+            displayAsArray(p.right);
+        }
+    }
+
     public void insert(int key) {
         this.root = insert(this.root,key);
     }
