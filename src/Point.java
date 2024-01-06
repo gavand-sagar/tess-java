@@ -1,26 +1,24 @@
-import java.util.ArrayList;
-import java.util.List;
 public class Point {
-    private int value;
+    private String value;
     private Point left;
     private Point right;
 
-    public Point(int value) {
+    public Point(String value) {
         this.value = value;
         this.left = null;
         this.right = null;
     }
-    public Point(int value, Point left, Point right) {
+    public Point(String value, Point left, Point right) {
         this.value = value;
         this.left = left;
         this.right = right;
     }
 
-    public int getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

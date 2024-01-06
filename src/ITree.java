@@ -1,9 +1,13 @@
 public interface ITree {
     void display();
-    void insertValue(int value);
+    void insertValue(String value);
 
-    boolean find(int value);
+    boolean find(String value);
 
     int size();
     boolean isEmpty();
+
+    void displayInAscOrder();
+
+    int total();
 }
