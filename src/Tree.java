@@ -1,137 +1,181 @@
-public class Tree implements ITree{
+class Tree implements  ITree{
+    Point root;
+    int height(Point N) {
+        if (N == null)
+            return 0;
 
-    private Point root = null;
-    private  int size = 0;
-    @Override
+        return N.height;
+    }
+    int max(int a, int b) {
+        return (a > b) ? a : b;
+    }
+
+    Point rightRotate(Point y) {
+        Point x = y.left;
+        Point T2 = x.right;
+
+        x.right = y;
+        y.left = T2;
+
+        y.height = max(height(y.left), height(y.right)) + 1;
+        x.height = max(height(x.left), height(x.right)) + 1;
+
+        return x;
+    }
+
+    Point leftRotate(Point x) {
+        Point y = x.right;
+        Point T2 = y.left;
+
+        y.left = x;
+        x.right = T2;
+
+        x.height = max(height(x.left), height(x.right)) + 1;
+        y.height = max(height(y.left), height(y.right)) + 1;
+
+        return y;
+    }
+
+    int getBalance(Point N) {
+        if (N == null)
+            return 0;
+
+        return height(N.left) - height(N.right);
+    }
+
     public void display() {
         display(root,"");
     }
     public void display(Point p,String indentation){
         if(p != null){
-            System.out.println(indentation + "-" + p.getValue());
-            display(p.getLeft(),indentation + " L");
-            display(p.getRight(),indentation + " R");
+            System.out.println(indentation + "-" + p.key);
+            display(p.left,indentation + " L");
+            display(p.right,indentation + " R");
         }
     }
+    public void insert(int key) {
+        this.root = insert(this.root,key);
+    }
+    Point insert(Point Point, int key) {
 
-    int getHeight(Point p){
-        if(p == null){
-            return 0;
+        if (Point == null)
+            return (new Point(key));
+
+        if (key < Point.key)
+            Point.left = insert(Point.left, key);
+        else if (key > Point.key)
+            Point.right = insert(Point.right, key);
+        else
+            return Point;
+
+        Point.height = 1 + max(height(Point.left),
+                height(Point.right));
+
+        int balance = getBalance(Point);
+
+        if (balance > 1 && key < Point.left.key)
+            return rightRotate(Point);
+
+        if (balance < -1 && key > Point.right.key)
+            return leftRotate(Point);
+
+        if (balance > 1 && key > Point.left.key) {
+            Point.left = leftRotate(Point.left);
+            return rightRotate(Point);
+        }
+
+        if (balance < -1 && key < Point.right.key) {
+            Point.right = rightRotate(Point.right);
+            return leftRotate(Point);
+        }
+
+        return Point;
+    }
+
+
+    public  int next(int input){
+        //find the given number and keep track of parent item
+            //once found
+                //check right
+                // if right then keep going to left and return the most left element
+                // if right doesn't exists return parent item
+
+        if(input == this.root.key){
+            Point temp = this.root;
+            if(temp.right != null){
+                return extractedForNext(temp);
+            }
         }else{
-            return p.getHeight();
+            int parent = this.root.key;
+            Point temp = this.root;
+            while (temp.key!=input){
+                if(input < temp.key){
+                    parent = temp.key;
+                    temp = temp.left;
+                }else{
+                    temp = temp.right;
+                }
+            }
+            if(temp.right != null){
+                return extractedForNext(temp);
+            }else{
+                return parent;
+            }
         }
+        return 0;
+    }
+    private static int extractedForNext(Point temp) {
+        Point left = temp.right.left;
+        if(left == null){
+            return temp.right.key;
+        }
+        while (left.left != null){
+            left = left.right;
+        }
+        return left.key;
     }
 
-    int getBalance(Point p){
-        if(p == null){
-            return 0;
+
+    public  int prev(int input){
+        //find the given number and keep track of parent item
+            //once found
+                //check left
+                // if left  then keep going to right and return the most right element
+                // if left doesn't exists return parent item
+
+        if(input == this.root.key){
+            Point temp = this.root;
+            if(temp.left != null){
+                return extractedForPrev(temp);
+            }
         }else{
-            return getHeight(p.getLeft()) - getHeight(p.getRight());
+            int parent = this.root.key;
+            Point temp = this.root;
+            while (temp.key!=input){
+                if(input < temp.key){
+                    temp = temp.left;
+                }else{
+                    parent = temp.key;
+                    temp = temp.right;
+                }
+            }
+            if(temp.left != null){
+                return extractedForPrev(temp);
+            }else{
+                return parent;
+            }
         }
+        return 0;
     }
 
-
-
-    @Override
-    public void insertValue(int value) {
-        this.root = this.insertValue(this.root,value);
-    }
-
-    private Point insertValue(Point root, int value) {
-        if(root == null){
-            return new Point(value);
+    private static int extractedForPrev(Point temp) {
+        Point right = temp.left.right;
+        if(right == null){
+            return temp.left.key;
         }
-        if(value < root.getValue()){
-            root.setLeft(insertValue(root.getLeft(),value));
-        }else if (value > root.getValue()){
-            root.setRight(insertValue(root.getRight(),value));
-        }else{
-            return root; // duplicate entry
+        while (right.right != null){
+            right = right.right;
         }
-
-        root.setHeight(Math.max(getHeight(root.getLeft()),getHeight(root.getRight())) + 1);
-
-
-        int balance = getBalance(root);
-
-        if(balance <= -1 && value > root.getRight().getValue()){
-            return leftRotate(root);
-        }
-        if(balance <= -1 && value < root.getRight().getValue()){
-            root.setRight(rightRotate(root.getRight()));
-            return leftRotate(root);
-        }
-
-        if(balance >= 1 && value < root.getLeft().getValue()){
-            return rightRotate(root);
-        }
-
-        if(balance >= 1 && value > root.getLeft().getValue()){
-            root.setLeft(leftRotate(root.getLeft()));
-            return rightRotate(root);
-        }
-
-
-        return root;
-    }
-
-
-    Point leftRotate(Point x){
-        Point y = x.getRight();
-        Point T2 = y.getLeft();
-
-        y.setLeft(x);
-        x.setRight(T2);
-
-        x.setHeight(Math.max(getHeight(x.getLeft()),getHeight(x.getRight())) + 1);
-        y.setHeight(Math.max(getHeight(y.getLeft()),getHeight(y.getRight())) + 1);
-        return y;
-    }
-
-    Point rightRotate(Point p){
-        Point temp = p.getLeft();
-        Point temp2 = temp.getRight();
-
-        temp.setRight(p);
-        p.setLeft(temp2);
-
-        p.setHeight(Math.max(getHeight(p.getLeft()),getHeight(p.getRight())) + 1);
-        temp.setHeight(Math.max(getHeight(temp.getLeft()),getHeight(temp.getRight())) + 1);
-        return temp;
-    }
-
-
-
-    @Override
-    public boolean find(int value) {
-            //implement the logic here
-            return find(this.root,value);
-    }
-
-    private boolean find(Point p, int value) {
-        //implement the logic here
-        if(p == null){
-            return false;
-        }
-        if(p.getValue() == value){
-            return  true;
-        }else if(value < p.getValue()){
-            return find(p.getLeft(),value);
-        }else{
-            return find(p.getRight(),value);
-        }
-
-    }
-
-
-
-    @Override
-    public int size() {
-        return size;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
+        return right.key;
     }
 }
