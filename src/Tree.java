@@ -1,7 +1,48 @@
-public class Tree implements ITree{
+import java.util.ArrayList;
+import java.util.List;
 
+public class Tree implements ITree{
     private Point root = null;
     private  int size = 0;
+    private boolean isReadOnly = false;
+
+    public Tree() {
+        this.isReadOnly = false;
+    }
+
+
+    public Tree(List<Integer> items) {
+        this.isReadOnly = true;
+        for (int value: items) {
+            this.insertValue(this.root,value);
+        }
+    }
+
+    public Tree(List<Integer> items,boolean isReadOnly) {
+        this.isReadOnly = isReadOnly;
+        for (int value: items) {
+            this.insertValue(this.root,value);
+        }
+    }
+
+    List<Integer> tempCollection;
+    @Override
+    public List<Integer> asCollection(){
+        tempCollection = new ArrayList<>();
+        asCollection(this.root);
+        return tempCollection;
+    }
+
+    private void asCollection(Point p){
+      if(p!=null){
+          asCollection(p.getLeft());
+          tempCollection.add(p.getValue());
+          asCollection(p.getRight());
+      }
+    }
+
+
+
     @Override
     public void display() {
         display(root,"");
@@ -17,6 +58,9 @@ public class Tree implements ITree{
 
     @Override
     public void insertValue(int value) {
+        if(isReadOnly){
+            return;
+        }
         this.insertValue(this.root,value);
     }
 
