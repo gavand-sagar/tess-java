@@ -70,6 +70,21 @@ public class Tree implements ITree{
             return find(this.root,value);
     }
 
+    private Point findPoint(Point p, int value) {
+        //implement the logic here
+        if(p == null){
+            return null;
+        }
+        if(p.getValue() == value){
+            return  p;
+        }else if(value < p.getValue()){
+            return findPoint(p.getLeft(),value);
+        }else{
+            return findPoint(p.getRight(),value);
+        }
+
+    }
+
     private boolean find(Point p, int value) {
         //implement the logic here
         if(p == null){
@@ -122,5 +137,75 @@ public class Tree implements ITree{
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    private int getPrev(int input){
+        Point point = findPoint(this.root,input);
+        if(point != null){
+            Point left = point.getLeft();
+            while (left.getRight() != null){
+                left = left.getRight();
+            }
+            return left.getValue();
+        }
+
+        return 0;
+    }
+
+
+    @Override
+    public  void delete(int value){
+        Point temp = this.root;
+        while (temp != null){
+            if(temp.getValue() == value) {
+                return;
+            }else if (temp.getValue() > value){
+                //left
+                if(temp.getLeft().getValue() == value){
+                    //deletion;
+                    //if its a leaf node?
+                    if(temp.getLeft().isLeaf()){
+                        temp.setLeft(null);
+                        return;
+                    }else if(temp.getLeft().hasSingleChild()){
+                        Point singleChild = temp.getLeft().getSingleChild();
+                        temp.setLeft(singleChild);
+                        return;
+                    }else if(temp.getLeft().hasBothChild()){
+                        //replace with prev or next
+                         int prev = getPrev(temp.getLeft().getValue());
+                        delete(prev);
+                        temp.getLeft().setValue(prev);
+                        return;
+                    }
+                    break;
+                }else{
+                    temp = temp.getLeft();
+                }
+            }else{
+                //right
+                if(temp.getRight().getValue() == value){
+                    //deletion;
+                    //if its a leaf node?
+                    if(temp.getRight().isLeaf()){
+                        temp.setRight(null);
+                        return;
+                    }else if(temp.getRight().hasSingleChild()){
+                        Point singleChild = temp.getRight().getSingleChild();
+                        temp.setRight(singleChild);
+                        return;
+                    }else if(temp.getRight().hasBothChild()){
+                        //replace with prev or next
+                        int prev = getPrev(temp.getRight().getValue());
+                        System.out.println("prev - " + prev);
+                        delete(prev);
+                        temp.getRight().setValue(prev);
+                        return;
+                    }
+                }else{
+                    temp = temp.getRight();
+                }
+            }
+        }
     }
 }

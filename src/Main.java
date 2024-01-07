@@ -2,7 +2,22 @@ import java.util.*;
 
 public class Main {
         public static void main(String[] args) {
-             treeFromUser();
+            deleteFromTree();
+        }
+
+        public static void deleteFromTree(){
+                ITree tree1 = new Tree();
+                tree1.insertValue(50);
+                tree1.insertValue(40);
+                tree1.insertValue(70);
+                tree1.insertValue(60);
+                tree1.insertValue(80);
+                tree1.display();
+                System.out.println();
+                System.out.println();
+                tree1.delete(70);
+                tree1.display();
+
         }
 
         public static void treeFromUser(){

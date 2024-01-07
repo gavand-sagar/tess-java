@@ -5,6 +5,33 @@ public class Point {
     private Point left;
     private Point right;
 
+    public boolean isLeaf(){
+        return this.getLeft() == null && this.getRight() == null;
+    }
+    public boolean hasOnlyRightChild(){
+        return this.getLeft() == null && this.getRight() !=null;
+    }
+    public boolean hasOnlyLeftChild(){
+        return this.getLeft() != null && this.getRight() == null;
+    }
+
+    public  boolean hasSingleChild(){
+        return hasOnlyRightChild() || hasOnlyLeftChild();
+    }
+
+    public Point getSingleChild(){
+        return hasOnlyRightChild()? this.getRight() : this.getLeft();
+    }
+
+
+    public boolean hasBothChild(){
+        return this.getLeft() != null && this.getRight() != null;
+    }
+
+
+
+
+
     public Point(int value) {
         this.value = value;
         this.left = null;
