@@ -5,12 +5,11 @@ public class Main {
         static IGraph graph = new Graph();
         public static void main(String[] args) {
 
-                graph.addPath(5,6);
                 graph.addPath(6,7);
-                graph.addPath(7,8);
+                graph.addPath(6,8);
                 graph.addPath(8,9);
 
-                if(graph.hasPath(6,5)){
+                if(graph.hasPath(2,9)){
                         System.out.println("Present");
                 }else{
                         System.out.println("Not Present");
