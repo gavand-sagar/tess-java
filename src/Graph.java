@@ -3,11 +3,13 @@ public class Graph implements IGraph{
     @Override
     public void addPath(int start, int end) {
         edges[start][end] = true;  // this logic will go in the addPath method
+        edges[end][start] = true;
     }
 
     @Override
     public void removePath(int start, int end) {
         edges[start][end] = false;
+        edges[end][start] = false;
     }
 
     @Override
