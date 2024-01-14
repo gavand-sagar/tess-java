@@ -35,19 +35,41 @@ public class Graph implements IGraph{
 
     @Override
     public boolean hasPath(int start, int end) {
+        return hasPathHelper(start,end,new HashSet<>(),1);
+    }
+
+
+    private boolean hasPathHelper(int start, int end,Set<Integer> visited,int edgeCount) {
+        if(visited.contains(start)){
+            return false;
+        }
+        System.out.print(start+"\t");
         Set<Integer> points = items.get(start);
         if(points == null){
             return false;
         }
-        return  points.contains(end);
+        if(points.contains(end)){
+            System.out.print(end);
+            System.out.print("EDGES- " + edgeCount);
+            return true;
+        }else{
+            boolean flag = false;
+            for (int point:points) {
+                if(hasPathHelper(point,end,visited,edgeCount+1)){
+                    flag = true;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 
     @Override
-    public void displayAllPaths(int start) {
-        displayAllPathHelper(start,new HashSet<>());
+    public void displayAllPaths(int start,int end) {
+        displayAllPathHelper(start,end,new HashSet<>());
     }
 
-    public void displayAllPathHelper(int start,Set<Integer> visited){
+    public void displayAllPathHelper(int start,int end,Set<Integer> visited){
         if(visited.contains(start)){
             return;
         }
@@ -55,11 +77,12 @@ public class Graph implements IGraph{
         if(points == null){
             return;
         }
-        for (int item:points) {
-            System.out.println(start+" --> "+item);
-            visited.add(start);
-            displayAllPathHelper(item,visited);
+        for (int point:points) {
+            if(hasPath(start,end)){
+                displayAllPathHelper(point,end,visited);
+            }
         }
+
     }
 
 }

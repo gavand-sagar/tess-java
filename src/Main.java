@@ -11,17 +11,15 @@ public class Main {
                 graph.addNode(5);
 
 
-                graph.addPath(2,4);
-                graph.addPath(2,5);
-                graph.addPath(3,2);
-                graph.addPath(3,4);
-                graph.addPath(5,4);
-                graph.addPath(5,2);
+               graph.addPath(6,8);
+
+               graph.addPath(6,7);
+               graph.addPath(7,9);
+               graph.addPath(9,10);
+               graph.addPath(10,8);
 
 
-                if(graph.hasPath(3,5)){
-                        System.out.println("Exists");
-                }
+               graph.hasPath(6,8);
 
         }
 
