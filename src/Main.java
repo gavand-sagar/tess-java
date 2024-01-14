@@ -2,36 +2,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
+        static  IGraph graph = new Graph();
         public static void main(String[] args) {
 
-            System.out.println("Calculated -" + getSquareButSmartly(3));
-            System.out.println("Calculated -" + getSquareButSmartly(4));
-            System.out.println("Calculated -" + getSquareButSmartly(5));
-            System.out.println("Calculated -" + getSquareButSmartly(3));
-            System.out.println("Calculated -" + getSquareButSmartly(3));
+                graph.addNode(2);
+                graph.addNode(3);
+                graph.addNode(4);
+                graph.addNode(5);
+
+
+                graph.addPath(2,4);
+                graph.addPath(2,5);
+                graph.addPath(3,2);
+                graph.addPath(3,4);
+                graph.addPath(5,4);
+                graph.addPath(5,2);
+
+               graph.displayAllPaths(3);
 
         }
 
-        public  static Map<Integer,Integer> results = new HashMap<Integer,Integer>();
-        public static int getSquareButSmartly(int number){
-            if(results.containsKey(number)){
-                return results.get(number);
-            }else{
-                int answer = getSquare(number);
-                results.put(number,answer);
-                return  answer;
-            }
-        }
 
-
-        public static int getSquare(int number){
-            System.out.println("Now Calculating for "+ number);
-            try{
-                Thread.sleep(1500);
-            }catch (Exception e){
-
-            }
-            return number * number;
-        }
 
 }
