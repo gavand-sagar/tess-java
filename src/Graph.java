@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph implements IGraph{
-    private boolean[][] edges = new boolean[100][100]; // private in class
+    private boolean[][] edges = new boolean[6][6]; // private in class
     @Override
     public void addPath(int start, int end) {
         edges[start][end] = true;  // this logic will go in the addPath method
@@ -21,6 +21,26 @@ public class Graph implements IGraph{
     public boolean hasPath(int start, int end) {
         countedItem = new ArrayList<>();
         return hasPathHelper(start, end);
+    }
+
+    @Override
+    public void displayAdjacencyMatrix() {
+        for (int i = 1; i < 6; i++) {
+            System.out.print("\t" + i);
+
+        }
+        System.out.println();
+        for (int i = 2; i < 6; i++) {
+            for (int j = 1; j<6; j++){
+                if(j==1){
+                    System.out.print("\t" + i);
+                }else{
+                    System.out.print("\t" + (edges[i][j]?"1":"0"));
+                }
+
+            }
+            System.out.println();
+        }
     }
 
     private boolean hasPathHelper(int start, int end) {

@@ -5,15 +5,10 @@ public class Main {
         static IGraph graph = new Graph();
         public static void main(String[] args) {
 
-                graph.addPath(6,7);
-                graph.addPath(6,8);
-                graph.addPath(8,9);
+                graph.addPath(6,1);
 
-                if(graph.hasPath(2,9)){
-                        System.out.println("Present");
-                }else{
-                        System.out.println("Not Present");
-                }
+                graph.displayAdjacencyMatrix();
+
 
 
 
