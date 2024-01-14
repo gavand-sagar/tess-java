@@ -18,7 +18,10 @@ public class Main {
                 graph.addPath(5,4);
                 graph.addPath(5,2);
 
-               graph.displayAllPaths(3);
+
+                if(graph.hasPath(3,5)){
+                        System.out.println("Exists");
+                }
 
         }
 
