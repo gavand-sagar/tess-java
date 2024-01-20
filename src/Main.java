@@ -2,36 +2,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
+
+        static IGraph graph = new Graph();
         public static void main(String[] args) {
 
-            System.out.println("Calculated -" + getSquareButSmartly(3));
-            System.out.println("Calculated -" + getSquareButSmartly(4));
-            System.out.println("Calculated -" + getSquareButSmartly(5));
-            System.out.println("Calculated -" + getSquareButSmartly(3));
-            System.out.println("Calculated -" + getSquareButSmartly(3));
+                graph.addPoint("Mumbai");
+                graph.addPoint("Delhi");
+                graph.addPoint("Bangalore");
+                graph.addPoint("Chennai");
+
+                graph.addEdge("Mumbai","Bangalore",200);
+
+                graph.addEdge("Mumbai","Chennai",20);
+                graph.addEdge("Chennai","Bangalore",20);
+
+
+
+//                System.out.println(graph.distance("Mumbai","Bangalore"));
+
+                System.out.println(graph.distanceV2("Mumbai","Bangalore"));
 
         }
 
-        public  static Map<Integer,Integer> results = new HashMap<Integer,Integer>();
-        public static int getSquareButSmartly(int number){
-            if(results.containsKey(number)){
-                return results.get(number);
-            }else{
-                int answer = getSquare(number);
-                results.put(number,answer);
-                return  answer;
-            }
-        }
-
-
-        public static int getSquare(int number){
-            System.out.println("Now Calculating for "+ number);
-            try{
-                Thread.sleep(1500);
-            }catch (Exception e){
-
-            }
-            return number * number;
-        }
 
 }
