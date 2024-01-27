@@ -4,34 +4,42 @@ import java.util.Map;
 public class Main {
         public static void main(String[] args) {
 
-            System.out.println("Calculated -" + getSquareButSmartly(3));
-            System.out.println("Calculated -" + getSquareButSmartly(4));
-            System.out.println("Calculated -" + getSquareButSmartly(5));
-            System.out.println("Calculated -" + getSquareButSmartly(3));
-            System.out.println("Calculated -" + getSquareButSmartly(3));
+            int[] input = new int[]{4,1,2,6,3,4,9};
 
-        }
+            System.out.println("Before Sort");
 
-        public  static Map<Integer,Integer> results = new HashMap<Integer,Integer>();
-        public static int getSquareButSmartly(int number){
-            if(results.containsKey(number)){
-                return results.get(number);
-            }else{
-                int answer = getSquare(number);
-                results.put(number,answer);
-                return  answer;
+            for (int number: input) {
+                System.out.print(number + "\t");
             }
-        }
 
+            System.out.println();
+            System.out.println();
 
-        public static int getSquare(int number){
-            System.out.println("Now Calculating for "+ number);
-            try{
-                Thread.sleep(1500);
-            }catch (Exception e){
-
+            for (int j = 0; j < input.length-1; j++) {
+                for (int i = 0; i < (input.length - 1 - j); i++) {
+                    int current =  input[i];
+                    int next = input[i+1];
+                    if(current>next){
+                        //swap
+                        input[i+1] = current;
+                        input[i] = next;
+                    }
+                }
             }
-            return number * number;
+
+
+
+
+            //BUBBLE SORT LOGIC
+
+            System.out.println("AfterSort");
+
+            for (int number: input) {
+                System.out.print(number + "\t");
+            }
+
         }
+
+
 
 }
