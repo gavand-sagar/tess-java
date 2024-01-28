@@ -24,20 +24,68 @@ public class Main {
                 int mid = getMid(array);
                 int[] leftArray = getLowestItems(array,mid);
                 int[] rightArray = getGreaterItems(array,mid);
-                return concat(quickSort(leftArray),new int[]{mid},quickSort(rightArray));
+                return concat(quickSort(leftArray),mid,quickSort(rightArray));
         }
 
-        private static int[] concat(int[] leftArray, int[] ints, int[] rightArray) {
+        private static int[] concat(int[] leftArray, int middle, int[] rightArray) {
+                int[] res = new int[leftArray.length + 1 + rightArray.length];
+                int c = 0;
+                for (int item :leftArray) {
+                       res[c++] =item;
+                }
+                res[c++] = middle;
+                for (int item :rightArray) {
+                        res[c++] =item;
+                }
+                return res;
         }
 
         private static int[] getGreaterItems(int[] array, int mid) {
+                int totalGreaterNumbers = getTotalOfGreaterNumber(array,mid);
+                int[] temp = new int[totalGreaterNumbers];
+                int c = 0;
+                for (int item:array) {
+                        if(item>mid){
+                             temp[c++] = item;
+                        }
+                }
+                return temp;
+        }
+
+        private static int getTotalOfGreaterNumber(int[] array, int mid) {
+                int couter = 0;
+                for (int item:array) {
+                        if(item>mid){
+                                couter++;
+                        }
+                }
+                return couter;
         }
 
         private static int[] getLowestItems(int[] array, int mid) {
+                int totalLowerNumber = getTotalOfLowerNumber(array,mid);
+                int[] temp = new int[totalLowerNumber];
+                int c = 0;
+                for (int item:array) {
+                        if(item<mid){
+                            temp[c++] = item;
+                        }
+                }
+                return temp;
+        }
+
+        private static int getTotalOfLowerNumber(int[] array, int mid) {
+                int couter = 0;
+                for (int item:array) {
+                        if(item<mid){
+                                couter++;
+                        }
+                }
+                return couter;
         }
 
         private static int getMid(int[] array) {
-
+                return array[array.length / 2];
         }
 
 }
