@@ -6,13 +6,45 @@ public class Main {
 
                 int[] array = new int[]{3,5,6,7,8,9,10};
 
-                if(binarySearch(array,17)){
+//                if(binarySearch(array,17)){
+//                        System.out.println("Found");
+//                }else{
+//                        System.out.println("Not found");
+//                }
+
+                if(binarySearchWithIndex(array,7)){
                         System.out.println("Found");
                 }else{
                         System.out.println("Not found");
                 }
 
+
+
         }
+
+
+        public  static boolean binarySearchWithIndex(int[] array,int value){
+                return binarySearchHelper(array,value,0,array.length);
+        }
+
+
+        public  static   boolean binarySearchHelper(int[] array,int value,int start,int end){
+                if(start>end){
+                        return  false;
+                }
+                if(start == end){
+                        return value == array[start];
+                }
+                int mid =  ((end - start) / 2 ) + start;
+                if(array[mid] == value) {
+                        return  true;
+                }else if (value < array[mid]){
+                        return  binarySearchHelper(array,value,0,mid);
+                }else{
+                        return  binarySearchHelper(array,value,mid+1, array.length);
+                }
+        }
+
 
 
         public  static  boolean binarySearch(int[] array,int value){
