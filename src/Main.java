@@ -20,42 +20,35 @@ public class Main {
                 System.out.println(fibo(3));
                 System.out.println(fibo(4));
                 System.out.println(fibo(5));
-                System.out.println(fibo(5));
-                System.out.println(fibo(5));
-                System.out.println(fibo(10));
+                System.out.println(fibo(6));
+                System.out.println(fibo(7));
+                System.out.println(fibo(8));
+                System.out.println(fibo(9));
 
 
         }
 
 
         static int fibo(int n) throws InterruptedException {
+
                 if(results.containsKey(n)){
                         return results.get(n);
                 }
+
                 if(n == 0){
                         results.put(n,0);
                         return 0;
                 }
+
                 if(n == 1){
                         results.put(n,1);
-                        return 1;
-                }
-                int firstNumber = 0 ;
-                int secondNumber = 1;
-
-
-                for (int i = 2; i < 1000; i++) {
-                        int next = secondNumber + firstNumber;
-                        if(n == i){
-                                results.put(n,next);
-                                return next;
-                        }
-                        Thread.sleep(1000);
-                        firstNumber = secondNumber;
-                        secondNumber = next;
+                        return  1;
                 }
 
-                return  -1;
+                Thread.sleep(1000);
+                int res = fibo(n-1) + fibo(n-2);
+                results.put(n,res);
+                return res;
 
         }
 
