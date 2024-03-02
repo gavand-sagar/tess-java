@@ -21,6 +21,7 @@ public class Main {
                                 }
                         }
                 }
+
                 Map<Character,Integer> requirement = new HashMap<>();
                 for (Character letter: word.toCharArray()) {
                         if(requirement.containsKey(letter)){
