@@ -10,7 +10,7 @@ public class Main {
                 for (int i = 0; i < numbers.length - 1; i++) {
                         int current = numbers[i];
                         int next = numbers[i+1];
-                        if(current + 1 == next){
+                        if( isOdd (current)  && (current + 2 == next)){
                                 System.out.println(current + "," + next);
                         }
                         
@@ -21,6 +21,15 @@ public class Main {
 
                         // display only when its n the sequemce
         }
+
+        public static  boolean isOdd(int number){
+                if(number % 2 != 0){
+                        return true;
+                }else{
+                        return false;
+                }
+        }
+
 
 
 }
